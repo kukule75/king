@@ -10,16 +10,18 @@
 	<modules>
 		<module>spring-cloud-eureka</module>
         <module>rig-app</module>
+        <module>pay-app</module>
+        <module>acc-app</module>
 	</modules>
 
 	<packaging>pom</packaging>
-	<name>Spring cloud zuul</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Spring cloud</name>
+	<description>Demo project for Spring cloud</description>
 
     <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.9.RELEASE</version>
+		<version>2.1.8.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -27,15 +29,15 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-        <spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
+        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
 	</properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>compile</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.h2database</groupId>-->
+            <!--<artifactId>h2</artifactId>-->
+            <!--<scope>compile</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

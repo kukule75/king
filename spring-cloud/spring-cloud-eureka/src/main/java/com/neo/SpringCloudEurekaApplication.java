@@ -11,4 +11,13 @@ public class SpringCloudEurekaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringCloudEurekaApplication.class, args);
 	}
+
+//	@EnableWebSecurity
+//	static class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+//		@Override
+//		protected void configure(HttpSecurity http) throws Exception {
+//			http.csrf().disable();
+//			super.configure(http);
+//		}
+//	}
 }

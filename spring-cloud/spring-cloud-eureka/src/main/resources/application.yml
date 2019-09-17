@@ -10,18 +10,18 @@
 spring:
   application:
     name: spring-cloud-eureka
+#  security:
+#    user:
+#      name: root
+#      password: 123456
 ###服务端口号
 sevice:
-  port: 8000
+  port: 8080
 eureka:
   instance:
-    ###注册中心ip地址
     hostname: localhost
   client:
-    ####因为自己是注册中心，是否需要将自己注册给自己的注册中心（集群的时候是需要是为true）
     register-with-eureka: false
-    ###因为自己是注册中心，不需要去检索服务信息
     fetch-registry: false
     serviceUrl:
-      ##注册地址
       defaultZone: http://${eureka.instance.hostname}:${sevice.port}/eureka/
