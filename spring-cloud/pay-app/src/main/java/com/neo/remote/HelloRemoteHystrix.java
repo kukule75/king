@@ -1,6 +1,5 @@
 package com.neo.remote;
 
-import com.neo.remote.HelloRemote;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
 
