@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kinden.spring.mapper.AccountMapper">
+  <resultMap id="BaseResultMap" type="kinden.spring.model.Account">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="acc_no" jdbcType="VARCHAR" property="accNo" />
+    <result column="acc_code" jdbcType="INTEGER" property="accCode" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="freeze_amount" jdbcType="DECIMAL" property="freezeAmount" />
+    <result column="sign" jdbcType="VARCHAR" property="sign" />
+    <result column="max_balance" jdbcType="DECIMAL" property="maxBalance" />
+    <result column="min_balance" jdbcType="DECIMAL" property="minBalance" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="status_code" jdbcType="BIGINT" property="statusCode" />
+    <result column="acc_type" jdbcType="CHAR" property="accType" />
+    <result column="dc_flag" jdbcType="CHAR" property="dcFlag" />
+    <result column="minus_flag" jdbcType="CHAR" property="minusFlag" />
+    <result column="minus_amount" jdbcType="DECIMAL" property="minusAmount" />
+    <result column="total_minus_amount" jdbcType="DECIMAL" property="totalMinusAmount" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, acc_no, acc_code, user_id, balance, freeze_amount, sign, max_balance, min_balance, 
+    status, status_code, acc_type, dc_flag, minus_flag, minus_amount, total_minus_amount, 
+    currency, create_time, update_time, version
+  </sql>
+
+  <insert id="save" parameterType="kinden.spring.model.Account" >
+    insert into account (acc_no, acc_code, user_id, `status`, status_code, acc_type,
+                         dc_flag, minus_flag)
+    values (#{accNo,jdbcType=VARCHAR}, #{accCode,jdbcType=INTEGER},
+            #{userId,jdbcType=BIGINT}, #{status,jdbcType=VARCHAR},
+            #{statusCode,jdbcType=BIGINT}, #{accType,jdbcType=CHAR},
+            #{dcFlag,jdbcType=CHAR}, #{minusFlag,jdbcType=INTEGER})
+  </insert>
+
+</mapper>
