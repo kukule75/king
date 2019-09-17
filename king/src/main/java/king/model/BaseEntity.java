@@ -1,5 +1,5 @@
 /**  
- * All rights Reserved, Designed By nonobank   
+ * All rights Reserved, Designed By kinden
  * @Title:  BaseEntity.java   
  * @Package acc.model      
  * @version V1.0     
