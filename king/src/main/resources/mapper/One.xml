@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="king.dao.OneDao" >
+
+  <resultMap id="BaseResultMap" type="king.model.po.One" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+  </resultMap>
+
+
+  <select id="findById" resultMap="BaseResultMap">
+    select id
+    from one
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <insert id="save" parameterType="king.model.po.One" >
+    insert into one (id)
+    values (#{id,jdbcType=INTEGER})
+  </insert>
+
+  <update id="update" >
+    update one set id = id + 1
+    where id = 1
+  </update>
+
+</mapper>

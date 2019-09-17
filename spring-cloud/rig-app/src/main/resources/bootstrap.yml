@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: rig-app
+  cloud:
+    config:
+      name: config
+      profile: dev
+#      uri: http://localhost:8001/
+      label: master
+      discovery:
+        enabled: true
+        serviceId: spring-cloud-config-server
+#server:
+#  port: 8002
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/

@@ -1,0 +1,18 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: rig-app
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+management:
+  security:
+    enabled: false
+
+#禁用过滤器
+#zuul:
+#  TestFilter:
+#    pre:
+#      disable: true

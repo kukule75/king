@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!--<setting name="localCacheScope" value="STATEMENT"/>-->
+        <!-- Globally enables or disables any caches configured in any mapper under this configuration -->
+        <!--<setting name="cacheEnabled" value="true"/>-->
+        <!-- Sets the number of seconds the driver will wait for a response from the database -->
+        <!--<setting name="defaultStatementTimeout" value="5"/>-->
+        <!-- Enables automatic mapping from classic database column names A_COLUMN to camel case classic Java property names aColumn -->
+        <!--<setting name="mapUnderscoreToCamelCase" value="true"/>-->
+        <!-- Allows JDBC support for generated keys. A compatible driver is required.
+        This setting forces generated keys to be used if set to true,
+         as some drivers deny compatibility but still work -->
+        <!--<setting name="useGeneratedKeys" value="true"/>-->
+        <!--<setting name="logImpl" value="SLF4J"/>-->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+    
+    <environments default="development">
+        <environment id="development">
+
+            <!--
+            JDBC–这个配置直接简单使用了JDBC的提交和回滚设置，
+            它依赖于从数据源得到的连接来管理事务范围。
+            MANAGED–这个配置几乎没做什么，它从来不提交或回滚一个连接，
+            而它会让容器来管理事务的整个生命周期（比如Spring或JEE应用服务器的上下文）。
+            -->
+
+            <transactionManager type="JDBC"></transactionManager>
+
+            <!--
+            UNPOOLED–这个数据源的实现是每次被请求时简单打开和关闭连接
+            POOLED–mybatis实现的简单的数据库连接池类型，它使得数据库连接可被复用，不必在每次请求时都去创建一个物理的连接。
+            JNDI – 通过jndi从tomcat之类的容器里获取数据源。
+            -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/my"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mapper/AccountMapper.xml"/>
+    </mappers>
+
+    <!-- Continue editing here -->
+
+</configuration>

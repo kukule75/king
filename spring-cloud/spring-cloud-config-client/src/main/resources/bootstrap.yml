@@ -1,0 +1,29 @@
+#spring.cloud.config.name=config
+#spring.cloud.config.profile=dev
+#spring.cloud.config.uri=http://localhost:8001/
+#spring.cloud.config.label=master
+
+#eureka.client.serviceUrl.defaultZone=http://localhost:8000/eureka/
+
+
+#spring.cloud.config.discovery.enabled=true
+#spring.cloud.config.discovery.serviceId=spring-cloud-config-server
+
+spring:
+  application:
+    name: spring-cloud-config-client
+  cloud:
+    config:
+      name: config
+      profile: dev
+#      uri: http://localhost:8001/
+      label: master
+      discovery:
+        enabled: true
+        serviceId: spring-cloud-config-server
+server:
+  port: 8002
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <bean id="bean1" name="alias1" class="king.service.impl.HelloServiceImpl"/>
+
+    <!--<bean id="bean3" name="alias2" class="king.service.impl.HelloServiceImpl"/>-->
+    <!--<bean id="kingService1" class="king.service.impl.KingServiceImpl" name="a,b" lazy-init="true"/>-->
+
+    <!--<bean id="kingService2" class="king.service.impl.KingServiceImpl">-->
+        <!--<constructor-arg index="0" value="hello spring"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="bean1" class="king.bean.BeanFactory" factory-method="newInstance">-->
+        <!--<constructor-arg index="0" value="hello spring"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="bean2" class="king.service.impl.King2ServiceImpl">-->
+        <!--<constructor-arg index="0" value="hello 1"/>-->
+        <!--<constructor-arg index="1" value="1"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="bean3" class="king.service.impl.King2ServiceImpl">-->
+        <!--<constructor-arg type="java.lang.String" value="hello 2"/>-->
+        <!--<constructor-arg type="int" value="1"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="bean4" class="king.service.impl.King2ServiceImpl">-->
+        <!--<constructor-arg name="message" value="hello 3"/>-->
+        <!--<constructor-arg name="index" value="1"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="byIndex" class="king.bean.BeanFactory" factory-method="newInstance">-->
+        <!--<constructor-arg index="0" value="hello 4"/>-->
+        <!--<constructor-arg index="1" value="4"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="byType" class="king.bean.BeanFactory" factory-method="newInstance">-->
+        <!--<constructor-arg type="java.lang.String" value="hello 5"/>-->
+        <!--<constructor-arg type="int" value="5"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="byName" class="king.bean.BeanFactory" factory-method="newInstance">-->
+        <!--<constructor-arg name="message" value="hello 6"/>-->
+        <!--<constructor-arg name="index" value="6"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="bySet" class="king.service.impl.King3ServiceImpl">-->
+        <!--<property name="message" value="hello 7"/>-->
+        <!--<property name="index" value="7"/>-->
+    <!--</bean>-->
+
+
+    <!--<bean id="string1" class="java.lang.String">-->
+        <!--<constructor-arg index="0" value="aaaa"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="idRef" class="king.bean.IdRefTestBean">-->
+        <!--<property name="id"><idref bean="string1"/> </property>-->
+    <!--</bean>-->
+
+    <!--<bean id="listBean" class="king.bean.ListBean">-->
+        <!--<property name="list">-->
+            <!--<list>-->
+                <!--<value>a</value>-->
+                <!--<value>b</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="setBean" class="king.bean.SetBean">-->
+        <!--<property name="set">-->
+            <!--<set>-->
+                <!--<value>a</value>-->
+                <!--<value>b</value>-->
+            <!--</set>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="arrayBean" class="king.bean.ArrayBean">-->
+        <!--<property name="array">-->
+            <!--<array>-->
+                <!--<value>a</value>-->
+                <!--<value>b</value>-->
+            <!--</array>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="mapBean" class="king.bean.MapBean">-->
+        <!--<property name="map">-->
+            <!--<map key-type="java.lang.String" value-type="java.lang.Integer">-->
+                <!--<entry key="a" value="1"/>-->
+                <!--<entry key="b" value="2"/>-->
+            <!--</map>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash;装饰者模式解释bean注入&ndash;&gt;-->
+    <!--<bean id="p" class="king.service.impl.KingServiceDecoratorImpl" p:kingService-ref="kingService2"/>-->
+
+    <!--<bean id="decoratorBean1" class="king.service.impl.KingServiceDecoratorImpl">-->
+        <!--<constructor-arg index="0" ref="kingService2"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="decoratorBean2" class="king.service.impl.KingServiceDecoratorImpl">-->
+        <!--<constructor-arg index="0" ref="kingService1"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="decorator3" class="king.service.impl.KingServiceDecoratorImpl">-->
+        <!--<property name="kingService" ref="kingService1"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash;内部bean&ndash;&gt;-->
+    <!--<bean id="decorator4" class="king.service.impl.KingServiceDecoratorImpl">-->
+        <!--<property name="kingService">-->
+            <!--<bean class="king.service.impl.KingServiceImpl"/>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+    <!--bean循环依赖测试 构造器注入-->
+    <!--<bean id="circleA" class="king.bean.circle.CircleA">-->
+        <!--<constructor-arg index="0" ref="circleB"/>-->
+    <!--</bean>-->
+    <!--<bean id="circleB" class="king.bean.circle.CircleB">-->
+        <!--<constructor-arg index="0" ref="circleC"/>-->
+    <!--</bean>-->
+    <!--<bean id="circleC" class="king.bean.circle.CircleC">-->
+        <!--<constructor-arg index="0" ref="circleA"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="circleD" class="king.bean.circle.CircleD">-->
+        <!--<property name="circleE" ref="circleE"/>-->
+    <!--</bean>-->
+    <!--<bean id="circleE" class="king.bean.circle.CircleE">-->
+        <!--<property name="circleD" ref="circleD"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="circleE" class="king.bean.circle.CircleE">-->
+        <!--<constructor-arg index="0" value="circleD"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash;depents-on init destroy&ndash;&gt;-->
+    <!--&lt;!&ndash;<bean id="resourceBean" class="king.bean.depends.ResourceBean" init-method="init"&ndash;&gt;-->
+          <!--&lt;!&ndash;destroy-method="destroy" p:file="file:/Users/user/Downloads/dependent.txt"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<bean id="dependentBean" class="king.bean.depends.DependentBean" init-method="init"&ndash;&gt;-->
+          <!--&lt;!&ndash;destroy-method="destroy" depends-on="resourceBean" p:resourceBean-ref="resourceBean"/>&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash;自动装配&ndash;&gt;-->
+    <!--<bean id="kingService" class="king.service.impl.KingServiceImpl"/>-->
+    <!--<bean id="kingServiceDecorator" class="king.service.impl.KingServiceDecoratorImpl"/>-->
+
+
+    <!--各种接口测试-->
+    <bean id="myBean" class="king.bean.MyBean" init-method="init"/>
+    <!--<bean id="myBeanPostProcessor" class="king.bean.MyBeanPostProcessorImpl"/>-->
+</beans>

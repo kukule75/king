@@ -1,0 +1,11 @@
+server:
+  port: 8989
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  config-location:  classpath:/mybatis/config/mybatis-config.xml
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/my?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&yearIsDateType=false
+    driver-class-name: com.mysql.jdbc.Driver
