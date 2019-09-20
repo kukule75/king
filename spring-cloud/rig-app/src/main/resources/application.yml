@@ -6,9 +6,27 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8000/eureka/
+      defaultZone: http://localhost:8080/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-detail: always
 
-#禁用过滤器
+
+zuul:
+  host:
+    maxTotalConnections: 200
+    maxPerRouteConnections: 20
+  #default is SEMAPHORE
+  ribbonIsolationStrategy: THREAD
+  routes:
+    pay:
+      path: /pay/**
+      serviceId: pay-app
 #zuul:
 #  TestFilter:
 #    pre:
