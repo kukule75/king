@@ -15,19 +15,9 @@ management:
   endpoint:
     health:
       show-detail: always
-
-
 zuul:
   host:
     maxTotalConnections: 200
     maxPerRouteConnections: 20
   #default is SEMAPHORE
   ribbonIsolationStrategy: THREAD
-  routes:
-    pay:
-      path: /pay/**
-      serviceId: pay-app
-#zuul:
-#  TestFilter:
-#    pre:
-#      disable: true
