@@ -1,4 +1,4 @@
-package com.neo.filter;
+package com.neo.filter.pre;
 
 import com.netflix.zuul.ZuulFilter;
 

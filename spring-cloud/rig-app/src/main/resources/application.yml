@@ -21,3 +21,4 @@ zuul:
     maxPerRouteConnections: 20
   #default is SEMAPHORE
   ribbonIsolationStrategy: THREAD
+  ignored-services: '*'
