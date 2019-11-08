@@ -1,8 +1,10 @@
+package array;
+
 import java.util.Arrays;
 
 /**
  * @author YuXiaodan
- * @ClassName Algo
+ * @ClassName array.Algo
  * @Description
  * 所有的0去左边，所有的1去右边
  * 条件low < high，是为了一边倒的情况发生，防止下标溢出

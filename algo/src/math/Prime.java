@@ -1,6 +1,8 @@
+package math;
+
 /**
  * @author YuXiaodan
- * @ClassName Prime
+ * @ClassName math.Prime
  * @Description
  * @date 2019年07月26日 2019/7/26
  */
@@ -23,7 +25,7 @@ public class Prime {
 
 		for(res = i; ;res++) {
 			flag = true;
-			for(divisor = 2; divisor < res; divisor++) {
+			for(divisor = 2; divisor < Math.sqrt(res); divisor++) {
 				if(res % divisor == 0) {
 					flag = false;
 					break;

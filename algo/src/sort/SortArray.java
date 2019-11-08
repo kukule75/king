@@ -8,16 +8,49 @@ import java.util.Arrays;
  * @Description
  * @date 2019年09月10日 2019/9/10
  */
-public class SortTest {
+public class SortArray {
 
 	public static void main(String[] args) {
 
-		int[] a = {9,8,7,6,5,4,3,2,1};
+		int[] a = {9,8,7,1,5,4,3,2,6};
 //		int[] a = {9,9,9,9,9,9};
 //		bubbleSort(a);
 //		insertSort(a);
-		selectSort(a);
+//		selectSort(a);
+		quickSort(a, 0, a.length - 1);
 		Arrays.stream(a).forEach(System.out::print);
+	}
+
+	public static void quickSort(int[] a, int start, int end) {
+
+		if (start >= end) {
+			return;
+		}
+
+		int i = start;
+		int j = end;
+		int pivot = a[end];
+
+		while (i < j) {
+			while (i < j && a[i] <= pivot) {
+				i++;
+			}
+			while (i < j && a[j] >= pivot) {
+				j--;
+			}
+
+			if (i != j) {
+				int temp = a[i];
+				a[i] = a[j];
+				a[j] = temp;
+			}
+		}
+
+		a[end] = a[i];
+		a[i] = pivot;
+
+		quickSort(a, start, i - 1);
+		quickSort(a, i + 1, end);
 	}
 
 	public static void bubbleSort(int[] a){

@@ -1,3 +1,5 @@
+package array;
+
 /**
  * @author kinden
  * 最大和子数组

@@ -1,3 +1,5 @@
+package array;
+
 /**
  * @author kinden
  * 查找指定长度的最大和子数组

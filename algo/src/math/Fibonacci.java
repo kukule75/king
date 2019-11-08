@@ -1,3 +1,5 @@
+package math;
+
 /**
  * @author kinden
  * 斐波那契数列递归实现,1,1,2,3,5,8
