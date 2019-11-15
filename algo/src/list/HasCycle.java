@@ -8,7 +8,7 @@ package list;
  */
 public class HasCycle {
 
-    class Node {
+    private class Node {
 
         private int var;
 
