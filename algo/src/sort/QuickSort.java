@@ -19,6 +19,35 @@ public class QuickSort {
 		Arrays.stream(array).forEach(System.out::print);
 	}
 
+	public static void a(int left, int right, int[] arr) {
+
+		int pivot = arr[left];
+
+		int i = left;
+		int j = right;
+
+		while (i < j) {
+			while (arr[j] >= pivot && i < j) {
+				j--;
+			}
+			while (arr[i] >= pivot && i < j) {
+				i++;
+			}
+
+			if (i < j) {
+				int temp = arr[j];
+				arr[j] = arr[i];
+				arr[i] = temp;
+			}
+		}
+
+		arr[left] = arr[i];
+		arr[i] = pivot;
+
+		a(left, i - 1, arr);
+		a(i + 1, right, arr);
+	}
+
 	//交换法，已最左为支点
 	//参考https://wiki.jikexueyuan.com/project/easy-learn-algorithm/fast-sort.html
 	public static void quickSort(int left, int right, int[] array){

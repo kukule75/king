@@ -12,7 +12,33 @@ public class BinarySearch {
 
 		int[] array = {1,2,3,23,26,33,37,45,49,51,56,60,64,72,78,83,88,97,100};
 
-		System.out.println(binarySearch(array, 34));
+//		System.out.println(binarySearch(array, 34));
+		System.out.println(a(array, 49));
+	}
+
+	private static int a(int[] array, int value) {
+
+		int len = array.length;
+
+		if (len == 0) {
+			return -1;
+		}
+
+		int low = 0;
+		int high = len - 1;
+
+		while (low <= high) {
+			int mid = low + ((high - low) >> 1);
+			if (array[mid] > value) {
+				high = mid - 1;
+			} else if (array[mid] < value) {
+				low = mid + 1;
+			} else {
+				return mid;
+			}
+		}
+
+		return -1;
 	}
 
 	private static boolean binarySearch(int[] array, int value) {

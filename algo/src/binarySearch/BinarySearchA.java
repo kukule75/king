@@ -3,7 +3,7 @@ package binarySearch;
 /**
  * @author YuXiaodan
  * @ClassName BinarySearchA
- * @Description 查找第一个给定值的元素
+ * @Description 查找第一个给定值的元素，左边界查找
  * @date 2019年09月10日 2019/9/10
  */
 public class BinarySearchA {
@@ -15,6 +15,7 @@ public class BinarySearchA {
 		System.out.println(binarySearch1(array, 1));
 	}
 
+	//思路简单，但是很难保证二分查找的优势，时间复杂度可能退化成O(n)
 	private static int binarySearch1(int[] array, int value) {
 
 		int low = 0;

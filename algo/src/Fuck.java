@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * @author YuXiaodan
@@ -31,5 +33,7 @@ public class Fuck {
 		Arrays.stream(copyOf).forEach(System.out::print);
 //		System.out.println(des.toString());
 
+		ArrayBlockingQueue i = new ArrayBlockingQueue(3);
+		i.add(1);
 	}
 }

@@ -19,7 +19,35 @@ public class IsAnagram {
         String s = "anagram";
         String t = "nagaram";
 
-        System.out.println(isAnagram(s, t));
+        System.out.println(isAnagramA(s, t));
+    }
+
+    private static boolean isAnagramA(String s, String d) {
+
+        int lenS = s.length();
+        int lenD = d.length();
+
+        if (lenD != lenS) {
+            return false;
+        }
+
+        int[] mem = new int[26];
+
+        char[] cs = s.toCharArray();
+        char[] cd = d.toCharArray();
+
+        for (int i = 0; i < cs.length; i++) {
+            mem[cs[i] - 'a']++;
+            mem[cd[i] - 'a']--;
+        }
+
+        for (int i = 0; i < mem.length; i++) {
+            if (mem[i] != 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public static boolean isAnagram(String s, String t) {

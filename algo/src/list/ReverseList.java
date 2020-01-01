@@ -26,7 +26,7 @@ public class ReverseList {
         node3.next = node4;
         node4.next = node5;
 
-        ListNode res = reverseListB(node1);
+        ListNode res = reverseListC(node1);
 
         while (res != null) {
             System.out.println(res.val);
@@ -34,29 +34,26 @@ public class ReverseList {
         }
     }
 
-
     /**
      * 换头法
      * 1->2->3->4->5
      * 2->1->3->4->5
      * 3->2->1->4->5
      *
-     * @param head
+     * @param node
      * @return
      */
-    public static ListNode reverseList(ListNode head) {
+    private static ListNode reverseListC(ListNode node) {
 
-        if (head == null) {
-            return null;
-        }
-        ListNode fh = head;
-        ListNode nh = head;
-        ListNode p = fh.next;
-        while (p != null) {
-            fh.next = p.next;
-            p.next = nh;
-            nh = p;
-            p = fh.next;
+        ListNode nh = null;// 指向新队列的头部
+        ListNode ch = node;// 前驱节点指向新队列后，这个就是老队列的头结点
+        ListNode cur = node;// 老队列中遍历过程的当前节点
+
+        while (ch != null) {
+            ch = cur.next;
+            cur.next = nh;
+            nh = cur;
+            cur = ch;
         }
 
         return nh;
@@ -88,29 +85,4 @@ public class ReverseList {
         return pre;
     }
 
-    /**
-     * 原地倒转法
-     * 1->2->3->4->5
-     * 1<-2->3->4->5
-     * 1<-2<-3->4->5
-     * 1<-2<-3<-4->5
-     * 1<-2<-3->4<-5
-     *
-     * @param head
-     * @return
-     */
-    public static ListNode reverseListB(ListNode head) {
-
-        ListNode pre = null;
-        ListNode cur = head;
-
-        while (cur != null) {
-            ListNode e = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = e;
-        }
-
-        return pre;
-    }
 }
