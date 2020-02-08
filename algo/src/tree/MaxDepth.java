@@ -27,7 +27,17 @@ public class MaxDepth {
         node3.left = node6;
         node3.right = node7;
 
-        System.out.println(maxDepth(node1));
+//        System.out.println(maxDepth(node1));
+        System.out.println(recurse(node1));
+    }
+
+    public static int recurse(TreeNode node){
+
+        if (node == null) {
+            return 0;
+        }
+
+        return Math.max(recurse(node.left), recurse(node.right)) + 1;
     }
 
     public static int maxDepth(TreeNode root) {

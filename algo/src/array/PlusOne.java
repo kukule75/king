@@ -15,13 +15,37 @@ public class PlusOne {
 
     public static void main(String[] args) {
 
-        int[] nums = {1,2,3};
+        int[] nums = {8,9,9,9};
+
+        int[] res = plusOne(nums);
+
+        Arrays.stream(res).forEach(System.out::print);
+
     }
 
     private static int[] plusOne(int[] nums) {
 
-        int temp = nums[nums.length - 1];
-        nums[nums.length - 1] = temp + 1;
+        int carry = 0;
+        nums[nums.length - 1] = nums[nums.length - 1] + 1;
+        int temp;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            temp = nums[i] + carry;
+            if (temp > 9) {
+                nums[i] = temp - 10;
+                carry = 1;
+            } else {
+                nums[i] = temp;
+                carry = 0;
+                break;
+            }
+        }
+
+        if (carry == 1) {
+            int[] res = new int[nums.length+1];
+            res[0] = 1;
+            System.arraycopy(nums, 0, res, 1, nums.length);
+            return res;
+        }
 
         return nums;
     }

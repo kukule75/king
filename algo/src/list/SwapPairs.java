@@ -22,7 +22,9 @@ public class SwapPairs {
         node2.next = node3;
         node3.next = node4;
 
-        ListNode res = swapPairs(node1);
+//        ListNode res = swapPairs(node1);
+
+        ListNode res = swapParisRecurse(node1);
 
         while (res != null) {
             System.out.println(res.val);
@@ -31,6 +33,25 @@ public class SwapPairs {
 
     }
 
+    // 递归，空间复杂度为O(N)
+    private static ListNode swapParisRecurse(ListNode head) {
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode next = head.next.next;
+        ListNode res = swapParisRecurse(next);
+
+        ListNode e = head;
+        head = head.next;
+        head.next = e;
+        e.next = res;
+
+        return head;
+    }
+
+    // 迭代法
     private static ListNode swapPairs(ListNode head) {
 
         ListNode sentry = new ListNode(0);

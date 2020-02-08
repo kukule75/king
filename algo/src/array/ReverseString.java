@@ -13,11 +13,14 @@ public class ReverseString {
 
         char[] str = {'h','e', 'l', 'l', 'o'};
 
-        reverseString(str);
+//        reverseString(str);
+
+        recurse(str);
 
         System.out.println(Arrays.toString(str));
     }
 
+    // 迭代法
     private static void reverseString(char[] str) {
 
         char temp;
@@ -27,5 +30,24 @@ public class ReverseString {
             str[i] = str[j];
             str[j] = temp;
         }
+    }
+
+    // 递归法
+    private static void recurse(char[] str) {
+
+        recurseHelper(0, str.length - 1, str);
+    }
+
+    private static void recurseHelper(int start, int end, char[] ch) {
+
+        if (start >= end) {
+            return;
+        }
+
+        char temp = ch[start];
+        ch[start] = ch[end];
+        ch[end] = temp;
+
+        recurseHelper(start + 1, end - 1, ch);
     }
 }

@@ -1,6 +1,4 @@
-import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.io.FileWriter;
 
 /**
  * @author YuXiaodan
@@ -10,30 +8,17 @@ import java.util.concurrent.LinkedBlockingDeque;
  */
 public class Fuck {
 
-	public static void main(String[] args) {
+	private static FileWriter fileWriter;
 
-//		ArrayList<Integer> list = new ArrayList<Integer>();
-//		list.add(2);
-//		Iterator<Integer> iterator = list.iterator();
-//		while(iterator.hasNext()){
-//			Integer integer = iterator.next();
-//			if(integer==2)
-//				list.remove(integer);
-//		}
+	public static void main(String[] args) throws InterruptedException {
 
-		int[] src = {1,2,3,4,5,};
-
-		int[] des = new int[5];
-
-		System.arraycopy(src, 0, des, 0, 5);
+		BoundedBlockingQueue1188 queue = new BoundedBlockingQueue1188(3);
 
 
-		final int[] copyOf = Arrays.copyOf(src, 5);
+		queue.enqueue(1);
 
-		Arrays.stream(copyOf).forEach(System.out::print);
-//		System.out.println(des.toString());
+		System.out.println(queue.dequeue());
 
-		ArrayBlockingQueue i = new ArrayBlockingQueue(3);
-		i.add(1);
+
 	}
 }
