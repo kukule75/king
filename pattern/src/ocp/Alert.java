@@ -1,0 +1,25 @@
+package ocp;
+
+import ocp.handle.AlertHandler;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author louis.yu
+ */
+
+public class Alert {
+    private List<AlertHandler> alertHandlers = new ArrayList<>();
+
+    public void addAlertHandler(AlertHandler alertHandler) {
+        this.alertHandlers.add(alertHandler);
+    }
+
+    public void check(ApiStatInfo apiStatInfo) {
+
+        for (AlertHandler handler : alertHandlers) {
+            handler.check(apiStatInfo);
+        }
+    }
+}

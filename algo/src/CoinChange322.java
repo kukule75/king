@@ -2,6 +2,10 @@ import java.util.Arrays;
 
 /**
  * @author kinden
+ *
+ * 每种币值使用不限次数
+ * 变种有每种币值使用限制s次，当然s可以等于1
+ * 提示，画一下递归树
  */
 public class CoinChange322 {
 
@@ -82,6 +86,7 @@ public class CoinChange322 {
 
 
     // 0.暴力，这个方式思维是错误的，不一定要先最大面额的先除尽分配
+    // 贪心思维，但是结果不对，如果局部最优不代表全局最优，就不能用贪心思维
     public static int coinChange(int[] coins, int amount) {
 
         Arrays.sort(coins);

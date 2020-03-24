@@ -12,4 +12,5 @@
  *
  */
 public class LongestCommonSubsequence1143 {
+
 }
