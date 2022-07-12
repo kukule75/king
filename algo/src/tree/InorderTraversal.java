@@ -7,7 +7,7 @@ import java.util.Stack;
 
 /**
  * @author kinden
- *
+ * <p>
  * 给定一个二叉树，返回它的中序 遍历。
  */
 public class InorderTraversal {
@@ -34,46 +34,35 @@ public class InorderTraversal {
         res.stream().forEach(System.out::println);
     }
 
-    // Morris Traversal
-    public static List<Integer> inOrderTraversalMorris(TreeNode root) {
 
-        List<Integer> res = new ArrayList<>();
-        if (root == null) {
-            return res;
-        }
-
-        return res;
-    }
-
-    //递归法
+    //////////////////////////Traversal////////////////////
+    // 1 recursion
     public static List<Integer> inOrderTraversalRecursion(TreeNode root) {
 
         List<Integer> res = new ArrayList<>();
 
-        if (root == null) {
-            return res;
-        }
         inOrderTraversalRecursionHelper(root, res);
 
         return res;
     }
 
+    // 1.1 helper
     private static void inOrderTraversalRecursionHelper(TreeNode e, List<Integer> res) {
 
-        if (e.left != null) {
-            inOrderTraversalRecursionHelper(e.left, res);
+        if (e == null) {
+            return;
         }
+
+        inOrderTraversalRecursionHelper(e.left, res);
         res.add(e.val);
-        if (e.right != null) {
-            inOrderTraversalRecursionHelper(e.right, res);
-        }
+        inOrderTraversalRecursionHelper(e.right, res);
     }
 
-    //栈空间辅助，迭代法
+    // iteration
     public static List<Integer> inOrderTraversal(TreeNode root) {
 
-        List < Integer > res = new ArrayList< >();
-        Stack < TreeNode > stack = new Stack < > ();
+        List<Integer> res = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
 
         TreeNode e = root;
         while (e != null || !stack.empty()) {
@@ -86,6 +75,21 @@ public class InorderTraversal {
             res.add(e.val);
             e = e.right;
         }
+
+        return res;
+    }
+
+    /////////////////Decompose////////////////////
+    public static List<Integer> inOrderDecompose(TreeNode root) {
+
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+
+        res.addAll(inOrderDecompose(root.left));
+        res.add(root.val);
+        res.addAll(inOrderDecompose(root.right));
 
         return res;
     }

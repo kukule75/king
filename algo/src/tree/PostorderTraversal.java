@@ -6,7 +6,7 @@ import java.util.Stack;
 
 /**
  * @author kinden
- *
+ * <p>
  * 给定一个二叉树，返回它的 后序 遍历。
  */
 public class PostorderTraversal {
@@ -33,37 +33,35 @@ public class PostorderTraversal {
         res.stream().forEach(System.out::println);
     }
 
-    //递归
+    //////////////////////////////////Traversal//////////////////////
+    // 1 recursion
     public static List<Integer> postOrderTraversalRecursion(TreeNode root) {
 
         List<Integer> res = new ArrayList<>();
-
-        if (root == null) {
-            return res;
-        }
 
         postOrderTraversalHelper(root, res);
 
         return res;
     }
 
+    // 1.1 helper
     private static void postOrderTraversalHelper(TreeNode e, List<Integer> res) {
 
-        if (e.left != null) {
-            postOrderTraversalHelper(e.left, res);
+        if (e == null) {
+            return;
         }
-        if (e.right != null) {
-            postOrderTraversalHelper(e.right, res);
-        }
+
+        postOrderTraversalHelper(e.left, res);
+        postOrderTraversalHelper(e.right, res);
 
         res.add(e.val);
     }
 
-    //迭代
+    // 2 Iteration
     public static List<Integer> postOrderTraversal(TreeNode root) {
 
-        List < Integer > res = new ArrayList< >();
-        Stack< TreeNode > stack = new Stack < > ();
+        List<Integer> res = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
         TreeNode curr = root;
         while (curr != null) {
             stack.push(curr);
@@ -79,6 +77,21 @@ public class PostorderTraversal {
                 stack.push(curr);
             }
         }
+        return res;
+    }
+
+    //////////////////////Decompose////////////////
+    public static List<Integer> postOrderDecompose(TreeNode root) {
+
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+
+        res.addAll(postOrderDecompose(root.left));
+        res.addAll(postOrderDecompose(root.right));
+        res.add(root.val);
+
         return res;
     }
 }

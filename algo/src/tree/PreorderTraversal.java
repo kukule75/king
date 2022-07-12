@@ -1,7 +1,6 @@
 package tree;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -32,38 +31,37 @@ public class PreorderTraversal {
         node3.right = node7;
 
 //        List<Integer> res = preOrderTraversalIteration(node1);
-        List<Integer> res = preOrderTraversalRecursion(node1);
+//        List<Integer> res = preOrderTraversalRecursion(node1);
+
+        List<Integer> res = preOrderDecompose(node1);
 
         res.stream().forEach(System.out::println);
     }
 
-    //递归
+    ////////////////////////////Traversal/////////////////////////////
+    // 1 recursion
     public static List<Integer> preOrderTraversalRecursion(TreeNode root) {
 
         List<Integer> res = new ArrayList<>();
 
-        if(root == null) {
-            return res;
-        }
-
         preOrderTraversalRecursionHelper(root, res);
 
         return res;
-
     }
 
+    // 1.1 helper
     private static void preOrderTraversalRecursionHelper(TreeNode e, List<Integer> res) {
 
+        if (e == null) {
+            return;
+        }
+
         res.add(e.val);
-        if (e.left != null) {
-            preOrderTraversalRecursionHelper(e.left, res);
-        }
-        if (e.right != null) {
-            preOrderTraversalRecursionHelper(e.right, res);
-        }
+        preOrderTraversalRecursionHelper(e.left, res);
+        preOrderTraversalRecursionHelper(e.right, res);
     }
 
-    //使用栈辅助，迭代法
+    // 2 Iteration
     public static List<Integer> preOrderTraversalIteration(TreeNode root) {
 
         List<Integer> res = new ArrayList<>();
@@ -87,5 +85,21 @@ public class PreorderTraversal {
 
         return res;
 
+    }
+
+    /////////////////////////Decompose///////////////////////////
+    // Decompose
+    public static List<Integer> preOrderDecompose(TreeNode root) {
+
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+
+        res.add(root.val);
+        res.addAll(preOrderDecompose(root.left));
+        res.addAll(preOrderDecompose(root.right));
+
+        return res;
     }
 }

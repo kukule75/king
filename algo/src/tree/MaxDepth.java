@@ -10,6 +10,8 @@ package tree;
  */
 public class MaxDepth {
 
+    static int maxDepth = Integer.MIN_VALUE;
+
     public static void main(String[] args) {
 
         TreeNode node1 = new TreeNode(1);
@@ -27,10 +29,13 @@ public class MaxDepth {
         node3.left = node6;
         node3.right = node7;
 
-//        System.out.println(maxDepth(node1));
-        System.out.println(recurse(node1));
+//        System.out.println(recurse(node1));
+        back(node1, 0);
+
+        System.out.println(maxDepth);
     }
 
+    ////////////////////////Dynamic////////////////////
     public static int recurse(TreeNode node){
 
         if (node == null) {
@@ -50,5 +55,20 @@ public class MaxDepth {
         int h2 = maxDepth(root.right);
 
         return h1 >= h2 ? h1 + 1: h2 + 1;
+    }
+
+    /////////////////back tracking//////////////////
+
+    public static void back(TreeNode root, int depth) {
+
+        if (root == null) {
+            return;
+        }
+
+        depth++;
+        maxDepth = Math.max(depth, maxDepth);
+        back(root.left, depth);
+        back(root.right, depth);
+        depth--;
     }
 }
