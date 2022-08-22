@@ -8,58 +8,82 @@ package binarySearch;
  */
 public class BinarySearch {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		int[] array = {1,2,3,23,26,33,37,45,49,51,56,60,64,72,78,83,88,97,100};
-
+//		int[] array = {1,2,3,23,26,33,37,45,49,51,56,60,64,72,78,83,88,97,100};
+        int[] array = {1, 2, 2, 2, 3};
 //		System.out.println(binarySearch(array, 34));
-		System.out.println(a(array, 49));
-	}
+//        System.out.println(search(array, 2));
+        System.out.println(searchRight(array, 2));
+    }
 
-	private static int a(int[] array, int value) {
 
-		int len = array.length;
+    // 基础版本
+    // 存在的问题：nums = [1,2,2,2,3]，target 为 2，此算法返回的索引是 2，无法找到最左元素
+    private static int search(int[] nums, int target) {
 
-		if (len == 0) {
-			return -1;
-		}
+        int i = 0;
+        int j = nums.length - 1;
 
-		int low = 0;
-		int high = len - 1;
+        while (i <= j) {// 为什么<=
+            int mid = i + (j - i) / 2;
+            int cur = nums[mid];
+            if (cur > target) {
+                j = mid - 1; // 为什么-1
+            } else if (cur < target) {
+                i = mid + 1; // 为什么+1
+            } else {
+                return mid;
+            }
+        }
 
-		while (low <= high) {
-			int mid = low + ((high - low) >> 1);
-			if (array[mid] > value) {
-				high = mid - 1;
-			} else if (array[mid] < value) {
-				low = mid + 1;
-			} else {
-				return mid;
-			}
-		}
+        return -1;
+    }
 
-		return -1;
-	}
+    // 匹配最左元素
+    private static int searchLeft(int[] nums, int target) {
 
-	private static boolean binarySearch(int[] array, int value) {
+        int i = 0;
+        int j = nums.length;
 
-		int low = 0;
+        while (i < j) {
+            int mid = i + (j - i) / 2;
+            if (nums[mid] == target) {
+                j = mid;
+            } else if (nums[mid] > target) {
+                j = mid;
+            } else if (nums[mid] < target) {
+                i = mid + 1;
+            }
+        }
 
-		int high = array.length - 1;//1
+        // target比所有数都大
+        if (j == nums.length) {
+            return -1;
+        }
+        return nums[i] == target ? i : -1;
+    }
 
-		while (low <= high) {
+    private static int searchRight(int[] nums, int target) {
 
-//			int mid = (low + high) >> 1;
-			int mid = low + ((high - low) >> 1);//2
-			if (array[mid] > value) {
-				high = mid - 1;//3
-			} else if (array[mid] < value) {
-				low = mid + 1;
-			} else {
-				return true;
-			}
-		}
+        int i = 0;
+        int j = nums.length;
 
-		return false;
-	}
+        while (i < j) {
+            int mid = i + (j - i) / 2;
+            if (nums[mid] == target) {
+                i = mid + 1;
+            } else if (nums[mid] < target) {
+                i = mid + 1;
+            } else if (nums[mid] > target) {
+                j = mid;
+            }
+        }
+
+        if (i - 1 < 0) {
+            return -1;
+        }
+
+        return nums[i - 1] == target ? i - 1: -1;/**/
+    }
 }
